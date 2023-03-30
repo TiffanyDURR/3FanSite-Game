@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3FANSITE</title>
+    <meta name="description" content="Fan Site - Les 3 Fromages" />
+    <meta name="keywords" content="Les 3 Fromages, Fan Site, les3fromages, Rock'n'Drôle" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/159d0e16c5.js" crossorigin="anonymous"></script>
+
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+  </head>
+
+  <body>
+    <div class="page">
+      <main>
+        <div class="main-content">
+          <div class="imgsGame">
+            <div class="score">
+              <div>Réponses : 00 / 20</div>
+              <span class="timer">Temps écoulé : <span class="minutes">00</span> : <span class="seconds">00</span></span>
+            </div>
+            <div class="letsGo">
+              <div class="inner">
+                <h1>Les règles du jeu :</h1>
+                <p>Il y a 20 éléments cachés dans l'image.</p>
+                <p>Il faut les retrouver et deviner à quelle chanson chaque object correspond.</p>
+                <p>
+                  <em><b>Exemple</b> : Un livre sur les expressions intitulé "Faire la pluie et le beau temps"</em>
+                </p>
+                <p>
+                  <em><b>Réponse</b> : "On est le monde"</em>
+                </p>
+                <p>Le but est de trouver les 20 chansons le plus vite possible !</p>
+
+                <div class="commencer">Commencer</div>
+              </div>
+
+              <div class="win">
+                <h1>Tu as terminé !</h1>
+                <p>Tu as trouvé les 20 chansons !</p>
+                <p>Ton temps :</p>
+                <div class="timeScore"></div>
+                <p>Si tu souhaites améliorer ton temps ;</p>
+                <div class="restart" onclick="location.reload()">Recommencer</div>
+              </div>
+            </div>
+            <img tabindex="1" class="id1" id="0" src="assets/001-Copie.png" />
+            <img tabindex="1" class="id2" id="1" src="assets/002-Copie.png" />
+            <img tabindex="1" class="id3" id="2" src="assets/003-Copie.png" />
+            <img tabindex="1" class="id4" id="3" src="assets/004-Copie.png" />
+            <img tabindex="1" class="id5" id="4" src="assets/005-Copie.png" />
+            <img tabindex="1" class="id6" id="5" src="assets/006-Copie.png" />
+            <img tabindex="1" class="id7" id="6" src="assets/007-Copie.png" />
+            <img tabindex="1" class="id8" id="7" src="assets/008-Copie.png" />
+            <img tabindex="1" class="id9" id="8" src="assets/009-Copie.png" />
+            <img tabindex="1" class="id10" id="9" src="assets/010-Copie.png" />
+            <img tabindex="1" class="id11" id="10" src="assets/011-Copie.png" />
+            <img tabindex="1" class="id12" id="11" src="assets/012-Copie.png" />
+            <img tabindex="1" class="id13" id="12" src="assets/013-Copie.png" />
+            <img tabindex="1" class="id14" id="13" src="assets/014-Copie.png" />
+            <img tabindex="1" class="id15" id="14" src="assets/015-Copie.png" />
+            <img tabindex="1" class="id16" id="15" src="assets/016-Copie.png" />
+            <img tabindex="1" class="id17" id="16" src="assets/017-Copie.png" />
+            <img tabindex="1" class="id18" id="17" src="assets/018-Copie.png" />
+            <img tabindex="1" class="id19" id="18" src="assets/019-Copie.png" />
+            <img tabindex="1" class="id20" id="19" src="assets/020-Copie.png" />
+
+            <div class="alertContainer"></div>
+            <div class="buttons">
+              <div class="recommencer"><span>Recommencer</span><i class="fas fa-undo-alt"></i></div>
+            </div>
+          </div>
+
+          <div class="thumbIMG"></div>
+          <img id="repimg" src="reponse.png" />
+          <form action="">
+            <input tabindex="0" id="inputCont" placeholder="Titre de la chanson..." type="text" autocomplete="off" />
+            <button class="button"><i class="fas fa-check"></i></button>
+          </form>
+          <div class="error"></div>
+        </div>
+
+        <div class="winner"></div>
+      </main>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
