@@ -113,6 +113,7 @@ let timerTime = 0;
 let isRunning = false;
 let interval;
 let x;
+let y;
 
 inputContainer.addEventListener("input", (e) => {
   inputValue = e.target.value.toLocaleLowerCase();
@@ -224,6 +225,9 @@ function actionsIfTrue() {
   displayArray();
 
   pngID.style.display = "none";
+  console.log(pngID.id);
+  y = pngID.id;
+  musicPlay(y);
   thumbIMG.innerHTML = ``;
   alertContainer.innerHTML = `<div class="alert">
         <span>Chanson trouvée !</span>
@@ -340,4 +344,10 @@ function winGame() {
     console.log(minutes.textContent);
     console.log(seconds.textContent);
   }
+}
+
+function musicPlay(y) {
+  const audio = new Audio();
+  audio.src = `assets/${y}.mp3`;
+  audio.play();
 }
