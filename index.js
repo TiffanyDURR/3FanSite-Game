@@ -247,6 +247,8 @@ function actionsIfTrue() {
   x = 2500;
   displayAlert(x);
   cleanInput();
+  y = "good";
+  musicPlay(y);
 }
 
 // Actions si l'input ne match pas avec la réponse
