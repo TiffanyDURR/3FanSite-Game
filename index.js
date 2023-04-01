@@ -374,14 +374,14 @@ function howmanylife() {
     viesContainer.innerHTML = `
     <i class="fas fa-heart"></i>
     <i class="fas fa-heart"></i>
-    <i class="far fa-heart die"></i>
+    <i class="fas fa-heart-broken die"></i>
     `;
   }
   if (vies == 1) {
     viesContainer.innerHTML = `
     <i class="fas fa-heart"></i>
-    <i class="far fa-heart die"></i>
-    <i class="far fa-heart die"></i>
+    <i class="fas fa-heart-broken die"></i>
+    <i class="fas fa-heart-broken die"></i>
     `;
   }
   if (vies == 0) {
