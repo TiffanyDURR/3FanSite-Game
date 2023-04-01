@@ -96,10 +96,12 @@ let imagesPNG = document.querySelectorAll(".imgsGame img");
 let reponsesContainer = document.querySelector(`.answers`);
 let restart = document.querySelector(".recommencer");
 let winDiv = document.querySelector(".win");
+let looseDiv = document.querySelector(".loose");
 let innerContainer = document.querySelector(".inner");
 let overlayBegin = document.querySelector(`.letsGo`);
 let buttonBegin = document.querySelector(`.commencer`);
 let timeScoreContainer = document.querySelector(".timeScore");
+let viesContainer = document.querySelector(".viescontainer");
 let pngID;
 let songTitle = "notSelected";
 
@@ -114,6 +116,7 @@ let isRunning = false;
 let interval;
 let x;
 let y;
+let vies = 3;
 
 inputContainer.addEventListener("input", (e) => {
   inputValue = e.target.value.toLocaleLowerCase();
@@ -123,6 +126,8 @@ buttonBegin.addEventListener("click", startTimer);
 buttonBegin.addEventListener("click", () => {
   buttonBegin.style.display = "none";
   overlayBegin.style.display = "none";
+  y = "song";
+  musicPlay(y);
 });
 
 restart.addEventListener("click", () => {
@@ -130,6 +135,11 @@ restart.addEventListener("click", () => {
 });
 
 function init() {
+  viesContainer.innerHTML = `
+  <i class="fas fa-heart"></i>
+  <i class="fas fa-heart"></i>
+  <i class="fas fa-heart"></i>
+  `;
   pngIDfinder();
   sendReponse();
 }
@@ -223,18 +233,18 @@ function displayArray() {
 function actionsIfTrue() {
   foundSongsArray.push(songTitle);
   displayArray();
-
-  pngID.style.display = "none";
-  console.log(pngID.id);
+  pngID.classList.add("animation");
+  setTimeout(() => {
+    pngID.style.display = "none";
+  }, 180);
   y = pngID.id;
-  musicPlay(y);
+  // musicPlay(y);
   thumbIMG.innerHTML = ``;
   alertContainer.innerHTML = `<div class="alert">
-        <span>Chanson trouvée !</span>
-        ${songTitle}
-        <span>Un point en plus <i class="fas fa-thumbs-up"></i> ! </span>
-        </div>`;
-  x = 2000;
+  <span>Chanson trouvée !</span>
+  ${songTitle}
+  </div>`;
+  x = 2500;
   displayAlert(x);
   cleanInput();
 }
@@ -244,9 +254,9 @@ function actionsIfFalse() {
   displayArray();
   alertContainer.innerHTML = `<div class="alert">
         <span>Mauvaise réponse !</span>
-        <span>Pas de point en plus <i class="fas fa-heart-broken"></i>...</span>
+        <span>Une vie en moins <i class="fas fa-heart-broken"></i>...</span>
         </div>`;
-  x = 2000;
+  x = 3000;
   displayAlert(x);
 }
 
@@ -256,7 +266,7 @@ function actionsIfUndefined() {
   alertContainer.innerHTML = `<div class="alert">
         <span>Tu dois sélectionner un élément avant de répondre !</span>
         </div>`;
-  x = 2000;
+  x = 2500;
   displayAlert(x);
 }
 
@@ -292,11 +302,12 @@ function sendReponse() {
     if (inputValue == "" || inputValue == "<empty string>") {
       actionsIfEmptyInput();
     } else if (scorePourcent > 75 && songTitle != "notSelected") {
-      console.log(scorePourcent);
       actionsIfTrue();
       songTitle = "notSelected";
     } else if (scorePourcent < 75 && songTitle != "notSelected") {
       actionsIfFalse();
+      vies = vies - 1;
+      howmanylife();
     }
     winGame();
   });
@@ -335,14 +346,11 @@ function winGame() {
     innerContainer.style.display = "none";
     alertContainer.style.display = "none";
     timeScoreContainer.innerHTML = `
-    ${minutes.textContent} : ${seconds.textContent} 
-
-    `;
+    ${minutes.textContent} : ${seconds.textContent} `;
+    viesContainer.style.display = "none";
     timerContainer.style.display = "none";
     inputContainer.style.display = "none";
     scoreContainer.style.display = "none";
-    console.log(minutes.textContent);
-    console.log(seconds.textContent);
   }
 }
 
@@ -350,4 +358,43 @@ function musicPlay(y) {
   const audio = new Audio();
   audio.src = `assets/${y}.mp3`;
   audio.play();
+}
+
+function howmanylife() {
+  if (vies == 3) {
+    viesContainer.innerHTML = `
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart"></i>
+    `;
+  }
+  if (vies == 2) {
+    viesContainer.innerHTML = `
+    <i class="fas fa-heart"></i>
+    <i class="fas fa-heart"></i>
+    <i class="far fa-heart die"></i>
+    `;
+  }
+  if (vies == 1) {
+    viesContainer.innerHTML = `
+    <i class="fas fa-heart"></i>
+    <i class="far fa-heart die"></i>
+    <i class="far fa-heart die"></i>
+    `;
+  }
+  if (vies == 0) {
+    viesContainer.style.display = "none";
+    innerContainer.style.display = "none";
+    overlayBegin.style.display = "block";
+    looseDiv.style.display = "inline-block";
+    innerContainer.style.display = "none";
+    alertContainer.style.display = "none";
+    timeScoreContainer.innerHTML = `
+    ${minutes.textContent} : ${seconds.textContent} 
+
+    `;
+    timerContainer.style.display = "none";
+    inputContainer.style.display = "none";
+    scoreContainer.style.display = "none";
+  }
 }

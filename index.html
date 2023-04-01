@@ -34,6 +34,7 @@
                   <em><b>Réponse</b> : "On est le monde"</em>
                 </p>
                 <p>Le but est de trouver les 20 chansons le plus vite possible !</p>
+                <p>Attention aux erreurs... tu n'as que 3 vies !</p>
 
                 <div class="commencer">Commencer</div>
               </div>
@@ -43,8 +44,13 @@
                 <p>Tu as trouvé les 20 chansons !</p>
                 <p>Ton temps :</p>
                 <div class="timeScore"></div>
-                <p>Si tu souhaites améliorer ton temps ;</p>
-                <div class="restart" onclick="location.reload()">Recommencer</div>
+                <div class="restart" onclick="location.reload()">Nouvelle partie</div>
+              </div>
+
+              <div class="loose">
+                <h1>Oh non, tu as perdu !</h1>
+                <p>Tu as perdu tes 3 vies...</p>
+                <div class="restart" onclick="location.reload()">Nouvelle partie</div>
               </div>
             </div>
             <img tabindex="1" class="id1" id="0" src="assets/001-Copie.png" />
@@ -67,7 +73,7 @@
             <img tabindex="1" class="id18" id="17" src="assets/018-Copie.png" />
             <img tabindex="1" class="id19" id="18" src="assets/019-Copie.png" />
             <img tabindex="1" class="id20" id="19" src="assets/020-Copie.png" />
-
+            <div class="viescontainer"></div>
             <div class="alertContainer"></div>
             <div class="buttons">
               <div class="recommencer"><span>Recommencer</span><i class="fas fa-undo-alt"></i></div>
